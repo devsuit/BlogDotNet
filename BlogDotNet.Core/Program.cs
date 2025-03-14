@@ -5,10 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+//qalbe abbas
 builder.Services.AddDbContext<BlogDbContext>(options=>
 options.UseSqlServer(
     builder.Configuration.GetConnectionString("DbBlogConnectionString")));
-    
+   // 
 
 var app = builder.Build();
 

@@ -29,7 +29,7 @@ namespace BlogDotNet.Core.Pages.Admin.Blogs
             return Page(); // Return the page with BlogPost data
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostEdit()
         {
             var existingBlogPost = blogDbContext.BlogPosts.Find(BlogPost.Id);
 
@@ -50,5 +50,14 @@ namespace BlogDotNet.Core.Pages.Admin.Blogs
 
             return RedirectToPage("/Admin/Blogs/List");
         }
+        public IActionResult OnPostDelete()
+        { var existingBlog = blogDbContext.BlogPosts.Find(BlogPost.Id);
+            if (existingBlog != null) {
+                blogDbContext.BlogPosts.Remove(existingBlog);
+                blogDbContext.SaveChanges();
+                return RedirectToPage("/Admin/Blogs/List");
+            }
+            return Page();
+                }
     }
 }

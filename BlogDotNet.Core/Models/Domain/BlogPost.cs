@@ -2,6 +2,7 @@
 {
     public class BlogPost
     {
+        internal static object?[]? id;
 
         public Guid Id { get; set; }
         public string Heading { get; set; }

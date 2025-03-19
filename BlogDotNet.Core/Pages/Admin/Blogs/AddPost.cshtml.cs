@@ -19,7 +19,7 @@ namespace BlogDotNet.Core.Pages.Admin.Blogs
         public void OnGet()
         {
         }
-        public IActionResult OnPost()
+        public async Task <IActionResult> OnPost()
             {
            var blogPost = new BlogPost()
            {
@@ -33,8 +33,8 @@ namespace BlogDotNet.Core.Pages.Admin.Blogs
                Author = AddBlogPostRequest.Author,
                Visible = AddBlogPostRequest.Visible
            };
-            blogDbContext.BlogPosts.Add(blogPost);
-            blogDbContext.SaveChanges();
+            await blogDbContext.BlogPosts.AddAsync(blogPost);
+            await blogDbContext.SaveChangesAsync();
             return RedirectToPage("/Admin/Blogs/List");
         }
         

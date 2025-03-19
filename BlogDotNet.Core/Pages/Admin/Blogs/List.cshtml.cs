@@ -2,6 +2,7 @@ using BlogDotNet.Core.Data;
 using BlogDotNet.Core.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
 namespace BlogDotNet.Core.Pages.Admin.Blogs
@@ -15,9 +16,9 @@ namespace BlogDotNet.Core.Pages.Admin.Blogs
         {
                 this.blogDbContext = blogDbContext;
         }
-        public void OnGet()
+        public async Task OnGet()
         {
-          BlogPosts =  blogDbContext.BlogPosts.ToList();
+            BlogPosts = await blogDbContext.BlogPosts.ToListAsync();
         }
     }
 }
